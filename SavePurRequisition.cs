@@ -22,11 +22,6 @@ namespace BD.Standard.BX.ListServicePlugInS7
 {
     [Kingdee.BOS.Util.HotUpdate]
     [Description("采购申请保存推送wms订单操作服务插件")]
-    /*
-     * 
-     * 更新时间：2024年11月8日15:37:02
-     * 
-     * **/
     public class SavePurRequisition : AbstractOperationServicePlugIn
     {
 

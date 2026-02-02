@@ -19,11 +19,6 @@ namespace BD.Standard.BX.ListServicePlugInS7
 {
     [Kingdee.BOS.Util.HotUpdate]
     [Description("退料申请下推退料提交操作服务插件")]
-    /*
-     * 
-     * 更新时间：2024年11月8日15:37:02
-     * 
-     * **/
     public class PushPurMrapp : AbstractOperationServicePlugIn
     {
 
