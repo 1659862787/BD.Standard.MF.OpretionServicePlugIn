@@ -78,6 +78,7 @@
     <Compile Include="Logger.cs" />
     <Compile Include="MWUTILS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runs.cs" />
     <Compile Include="SavePurRequisition.cs" />
     <Compile Include="PushPurMrapp.cs" />
   </ItemGroup>

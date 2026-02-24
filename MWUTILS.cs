@@ -36,11 +36,19 @@ namespace BD.Standard.MF.OpretionServicePlugIn
                 foreach (DataColumn columns in dataH.Table.Columns)
                 {
                     string column = columns.ColumnName.ToString();
-                   
-                    data.Add(new JProperty(column, dataH[column].ToString()));
+                    if (column.Equals("Effective"))
+                    {
+                        data.Add(new JProperty(column, Convert.ToBoolean(dataH[column].ToString())));
+                    }
+                    else
+                    {
+                        data.Add(new JProperty(column, dataH[column]));
+                    }
+                        
                 }
                 if (datas.Tables.Count == 3)
                 {
+                    if (datas.Tables[2].Rows.Count == 0) return null;
                     JArray jsonEntry = new JArray();
                     foreach (DataRow dataE in datas.Tables[2].Rows)
                     {
@@ -48,7 +56,7 @@ namespace BD.Standard.MF.OpretionServicePlugIn
                         foreach (DataColumn columns in dataE.Table.Columns)
                         {
                             string column = columns.ColumnName.ToString();
-                            if (column.Equals("location"))
+                            if (column.Equals("location")|| column.Equals("FSrcStockLocId") || column.Equals("FDestStockLocId"))
                             {
                                 SelectStockLocId(context, dataE, jobE, column);
                             }
@@ -143,7 +151,7 @@ namespace BD.Standard.MF.OpretionServicePlugIn
             DBUtils.Execute(context, sql2);
 
             //同步成功，输出消息，更改单据同步状态字段，记录日志
-            if (jo["code"].ToString().Equals("200") && Convert.ToBoolean(jo["beSuccess"].ToString()))
+            if (jo["code"].ToString().Equals("200") && Convert.ToBoolean(jo["beSuccess"].ToString())||type.Equals("Runs"))
             {
                 operationResult.OperateResult.Add(new OperateResult()
                 {

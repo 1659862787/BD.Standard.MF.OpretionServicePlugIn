@@ -1,4 +1,5 @@
 ﻿
+using BD.Standard.MF.OpretionServicePlugIn;
 using Kingdee.BOS;
 using Kingdee.BOS.App.Data;
 using Kingdee.BOS.Core.DynamicForm;
@@ -36,6 +37,7 @@ namespace BD.Standard.BX.ListServicePlugInS7
                 e.FieldKeys.Add(item.Key);
             }
         }
+
         /// <summary>
         /// 菜单操作方法
         /// </summary>
@@ -50,6 +52,9 @@ namespace BD.Standard.BX.ListServicePlugInS7
                 string DBID = config.Tables[0].Rows[0].ItemArray[1].ToString();
                 if (!Context.DBId.Equals(DBID)) return ;
 
+
+                Logger logger = new Logger(Logpath + "PUR_MRAPP" + "\\", DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
+                
                 string opera = this.FormOperation.Operation;
                 IOperationResult operationResult = new OperationResult();
                 foreach (DynamicObject entity in e.DataEntitys)
@@ -64,7 +69,9 @@ namespace BD.Standard.BX.ListServicePlugInS7
                         { "IsEnableDefaultRule","true" },
                         { "IsDraftWhenSaveFail","false" }
                     };
+                    logger.WriteLog("请求："+ json.ToString());
                     string MessageReturned = JsonConvert.SerializeObject(WebApiServiceCall.Push(Context, "PUR_MRAPP", json.ToString()));
+                    logger.WriteLog("响应：" + MessageReturned);
                     if (JObject.Parse(MessageReturned)["Result"]["ResponseStatus"]["IsSuccess"].ToString().Equals("True"))
                     {
                         string fid = ((Newtonsoft.Json.Linq.JContainer)JObject.Parse(JObject.Parse(MessageReturned)["Result"]["ResponseStatus"]["SuccessEntitys"][0].ToString()).First).First.ToString();
@@ -72,14 +79,16 @@ namespace BD.Standard.BX.ListServicePlugInS7
                         {
                             { "Ids",fid }
                         };
+                        logger.WriteLog("提交：" + Submitjson.ToString());
                         string submit = JsonConvert.SerializeObject(WebApiServiceCall.Submit(Context, "PUR_MRB", Submitjson.ToString()));
-                        if (JObject.Parse(MessageReturned)["Result"]["ResponseStatus"]["IsSuccess"].ToString().Equals("True"))
+                        logger.WriteLog("提交操作：" + submit);
+                        if (JObject.Parse(submit)["Result"]["ResponseStatus"]["IsSuccess"].ToString().Equals("True"))
                         {
                             operationResult.OperateResult.Add(new OperateResult()
                             {
                                 SuccessStatus = true,
                                 Name = "采购退料提交成功",
-                                Message = string.Format(fbillno + ":WMS同步成功，"+ submit),
+                                Message = string.Format(fbillno + ":WMS同步成功，"),
                                 MessageType = MessageType.Normal,
                                 PKValue = 0,
                             });
@@ -96,7 +105,7 @@ namespace BD.Standard.BX.ListServicePlugInS7
                         {
                             SuccessStatus = true,
                             Name = "自动下推失败",
-                            Message = string.Format(fbillno + " : " + MessageReturned),
+                            Message = string.Format(fbillno),
                             MessageType = MessageType.Normal,
                             PKValue = 0,
                         });
@@ -108,7 +117,7 @@ namespace BD.Standard.BX.ListServicePlugInS7
             }
             catch (Exception ex)
             {
-                throw new Exception("采购退料单提交时推送WMS失败，请联系运维查看详情日志！");
+                throw new Exception("采购退料单提交时推送WMS失败，请联系运维查看详情日志！"+ex.Message);
             }
         }
 
