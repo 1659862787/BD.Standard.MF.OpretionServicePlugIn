@@ -7,8 +7,8 @@
     <ProjectGuid>{90E2C5BD-400A-4664-A397-C7EF74548842}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BD.Standard.MF.OpretionServicePlugIn12</RootNamespace>
-    <AssemblyName>BD.Standard.MF.OpretionServicePlugIn12</AssemblyName>
+    <RootNamespace>BD.Standard.MF.OpretionServicePlugIn14</RootNamespace>
+    <AssemblyName>BD.Standard.MF.OpretionServicePlugIn14</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
