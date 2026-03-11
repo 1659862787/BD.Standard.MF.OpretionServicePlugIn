@@ -82,6 +82,8 @@
     <Compile Include="SavePurRequisition.cs" />
     <Compile Include="PushPurMrapp.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ConfigFile\MiFeiSql.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
