@@ -40,6 +40,10 @@ namespace BD.Standard.MF.OpretionServicePlugIn
                     {
                         data.Add(new JProperty(column, Convert.ToBoolean(dataH[column].ToString())));
                     }
+                    else if (column.Equals("name"))
+                    {
+                        data.Add(new JProperty(column, dataH[column].ToString().Replace('\u00A0', ' ')));
+                    }
                     else
                     {
                         data.Add(new JProperty(column, dataH[column]));
@@ -59,6 +63,10 @@ namespace BD.Standard.MF.OpretionServicePlugIn
                             if (column.Equals("location")|| column.Equals("FSrcStockLocId") || column.Equals("FDestStockLocId"))
                             {
                                 SelectStockLocId(context, dataE, jobE, column);
+                            }
+                            else if (column.Equals("itemname"))
+                            {
+                                data.Add(new JProperty(column, dataH[column].ToString().Replace('\u00A0', ' ')));
                             }
                             else
                             {
