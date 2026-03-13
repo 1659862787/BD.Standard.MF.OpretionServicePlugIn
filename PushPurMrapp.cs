@@ -1,5 +1,4 @@
 ﻿
-using BD.Standard.MF.OpretionServicePlugIn;
 using Kingdee.BOS;
 using Kingdee.BOS.App.Data;
 using Kingdee.BOS.Core.DynamicForm;
@@ -16,7 +15,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Runtime.Remoting.Contexts;
 
-namespace BD.Standard.BX.ListServicePlugInS7
+namespace BD.Standard.MF.OpretionServicePlugIn
 {
     [Kingdee.BOS.Util.HotUpdate]
     [Description("退料申请下推退料提交操作服务插件")]

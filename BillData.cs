@@ -12,7 +12,6 @@ namespace BD.Standard.MF.OpretionServicePlugIn
 {
 
     [Description("单据操作服务插件")]
-    [assembly: System.Security.SecurityRules(System.Security.SecurityRuleSet.Level1)]
     /*
      * 
      * 更新时间：2024年11月8日15:37:02

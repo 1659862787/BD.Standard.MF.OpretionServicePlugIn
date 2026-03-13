@@ -7,8 +7,8 @@
     <ProjectGuid>{90E2C5BD-400A-4664-A397-C7EF74548842}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BD.Standard.MF.OpretionServicePlugIn14</RootNamespace>
-    <AssemblyName>BD.Standard.MF.OpretionServicePlugIn14</AssemblyName>
+    <RootNamespace>BD.Standard.MF.OpretionServicePlugIn2S</RootNamespace>
+    <AssemblyName>BD.Standard.MF.OpretionServicePlugIn2S</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -76,6 +76,7 @@
     <Compile Include="BasicData.cs" />
     <Compile Include="BillData.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="MoFbillno\MOFbillno.cs" />
     <Compile Include="MWUTILS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Runs.cs" />
@@ -83,7 +84,9 @@
     <Compile Include="PushPurMrapp.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConfigFile\MiFeiSql.sql" />
+    <Content Include="SQLServerFile\ProcSql.sql" />
+    <Content Include="SQLServerFile\TableSql.sql" />
+    <Content Include="MoFbillno\Remark.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

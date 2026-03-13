@@ -17,11 +17,11 @@ using System.Security.Policy;
 
 
 //47
-namespace BD.Standard.MF.OpretionServicePlugIn12
+namespace BD.Standard.MF.OpretionServicePlugIn
 {
     [Kingdee.BOS.Util.HotUpdate]
     [Description("物料批量插件")]
-    //BD.Standard.MF.OpretionServicePlugIn12.Runs,BD.Standard.MF.OpretionServicePlugIn12
+    //BD.Standard.MF.OpretionServicePlugIn.Runs,BD.Standard.MF.OpretionServicePlugIn2S
     public class Runs : IScheduleService
     {
         public void Run(Context ctx, Schedule schedule)
@@ -34,7 +34,7 @@ namespace BD.Standard.MF.OpretionServicePlugIn12
                 string parameterFormId = schedule.ParameterFormId;
                 
 
-                DynamicObjectCollection dys = DBUtils.ExecuteDynamicObject(ctx,string.Format("select FMASTERID,fnumber from  T_BD_MATERIAL where FUSEORGID=1 and FDOCUMENTSTATUS='C' and  FFORBIDSTATUS='A' and fnumber  not in (select fnumber from  [dbo].[MiFei_logs] where fromid='Material') "));
+                DynamicObjectCollection dys = DBUtils.ExecuteDynamicObject(ctx,string.Format("select FMASTERID,fnumber from  T_BD_MATERIAL where FUSEORGID=1 and FDOCUMENTSTATUS='C' and  FFORBIDSTATUS='B' and fnumber  not in (select fnumber from  [dbo].[MiFei_logs] where fromid='Material') "));
                 foreach (DynamicObject dyn in dys)
                 {
                     IOperationResult operationResult = new OperationResult();

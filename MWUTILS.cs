@@ -66,7 +66,7 @@ namespace BD.Standard.MF.OpretionServicePlugIn
                             }
                             else if (column.Equals("itemname"))
                             {
-                                data.Add(new JProperty(column, dataH[column].ToString().Replace('\u00A0', ' ')));
+                                jobE.Add(new JProperty(column, dataE[column].ToString().Replace('\u00A0', ' ')));
                             }
                             else
                             {

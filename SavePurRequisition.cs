@@ -18,7 +18,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
 
-namespace BD.Standard.BX.ListServicePlugInS7
+namespace BD.Standard.MF.OpretionServicePlugIn
 {
     [Kingdee.BOS.Util.HotUpdate]
     [Description("采购申请保存推送wms订单操作服务插件")]

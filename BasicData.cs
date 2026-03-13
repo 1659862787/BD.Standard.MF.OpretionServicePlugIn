@@ -12,7 +12,6 @@ using System.ComponentModel;
 namespace BD.Standard.MF.OpretionServicePlugIn
 {
     [Description("基础资料操作服务插件")]
-    [assembly: System.Security.SecurityRules(System.Security.SecurityRuleSet.Level1)]
 
     /*
      * 
