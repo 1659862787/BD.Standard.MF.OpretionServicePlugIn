@@ -7,8 +7,8 @@
     <ProjectGuid>{90E2C5BD-400A-4664-A397-C7EF74548842}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BD.Standard.MF.OpretionServicePlugIn2S</RootNamespace>
-    <AssemblyName>BD.Standard.MF.OpretionServicePlugIn2S</AssemblyName>
+    <RootNamespace>BD.Standard.MF.OpretionServicePlugIn2STest</RootNamespace>
+    <AssemblyName>BD.Standard.MF.OpretionServicePlugIn2STest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

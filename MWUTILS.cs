@@ -148,10 +148,14 @@ namespace BD.Standard.MF.OpretionServicePlugIn
             string tableid = dy.Tables[0].Rows[0].ItemArray[2].ToString();
             if (json == null) return null;
 
+            Logger logger = new Logger(Logpath + fromid + "\\", DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
+            logger.WriteLog( "\r\n请求json:" + json);
 
             string ss = HttpPost(http + method, json);
 
             ss = ss.Replace("0E-8", "0");
+            logger.WriteLog("\r\n相应json:" + ss);
+
             JObject jo = (JObject)JsonConvert.DeserializeObject(ss);
 
             string sql2 = string.Format("insert into MiFei_logs (fromid,fnumber,reqjson,respjson,reqdate) values('{0}','{1}','{2}','{3}','{4}')", fromid, fnumber, json.Replace("'", "''"), ss.Replace("'", "''"), DateTime.Now.ToString("yyyy-MM-dd"));
@@ -173,7 +177,7 @@ namespace BD.Standard.MF.OpretionServicePlugIn
             else
             {
 
-                Logger logger = new Logger(Logpath + fromid + "\\", DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
+                //Logger logger = new Logger(Logpath + fromid + "\\", DateTime.Now.ToString("yyyy-MM-dd") + ".txt");
                 logger.WriteLog("数据出现异常,错误信息：" + ss + "\r\n请求json:" + json);
 
                 throw new Exception("对接返回失败信息：" + ss + "\r\n请求json:" + json);
