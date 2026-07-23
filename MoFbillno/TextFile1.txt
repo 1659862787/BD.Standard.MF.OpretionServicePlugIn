@@ -1,0 +1,6 @@
+﻿select distinct 1 from T_SAL_OUTSTOCKFIN a
+inner join T_SAL_OUTSTOCKentry b on a.fid=b.fid
+inner join T_SAL_OUTSTOCKENTRY_R c on b.fentryid=c.fentryid
+inner join T_SAL_ORDER d on c.FSOORDERNO=d.FBILLNO
+inner join T_SAL_ORDERFIN e on d.fid=e.fid
+where  a.FSettleCurrID=e.FSettleCurrID  and  a.fid=100378
