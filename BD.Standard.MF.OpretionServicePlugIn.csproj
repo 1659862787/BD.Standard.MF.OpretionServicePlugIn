@@ -84,6 +84,7 @@
     <Compile Include="PushPurMrapp.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="README.md" />
     <Content Include="SQLServerFile\ProcSql.sql" />
     <Content Include="SQLServerFile\TableSql.sql" />
     <Content Include="MoFbillno\Remark.txt" />
